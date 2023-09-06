@@ -8,27 +8,27 @@ import 'package:flutter/material.dart';
 class formlabel extends StatelessWidget {
  final Color? color; 
  final double? fontSize;
- 
  final String? text;
- final String? fontWeight;
+ final FontWeight? fontWeight;
+ final AlignmentGeometry align;
+ 
 
   const formlabel({
-
-   
-  
-    super.key, this.color, this.fontSize, this.fontWeight, this.text, 
+    super.key, this.color, this.fontSize, this.fontWeight, this.text, required this.align,  
   });
+
 
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.topLeft,
+      alignment:  align,
       child: AppText(
         text!,
         style: Styles.montSerratRegular(context,
             color: color,
             fontSize: fontSize,
-            // fontWeight: fontWeight,
+            // fontWeight: fontWeight, 
+             
            ),
       ),
     );

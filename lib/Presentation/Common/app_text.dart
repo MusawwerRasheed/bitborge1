@@ -9,8 +9,10 @@ class AppText extends StatelessWidget {
   final TextAlign? textAlign;
   final dynamic? fontSize; 
   final int? maxLine;
+  
   const AppText(
     
+ 
     this.text,    {
     super.key,
   this.style,

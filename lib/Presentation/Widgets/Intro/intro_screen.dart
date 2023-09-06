@@ -5,8 +5,6 @@ import 'package:bitborge/Data/DataSource/Static/text_styles.dart';
 import 'package:bitborge/Data/DataSource/Static/utils.dart';
 import 'package:bitborge/Presentation/Common/app_text.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/login_screen.dart';
-import 'package:bitborge/Presentation/Widgets/Intro/testing.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../Application/NavigationServices/Navigation.dart';
@@ -49,7 +47,10 @@ class _IntroPageState extends State<IntroPage> {
         curve: Curves.ease,
       );
     } else {
+    
+
       Navigate.to(context, LoginScreen());
+
     }
   }
 

@@ -8,6 +8,8 @@ class AppColors{
   static const Color secondarycolor = Color(0xFF13182B);
   static const Color yellowcolor = Color(0xFFF2AD0B);
   static const Color grettext = Color.fromARGB(255, 111, 115, 133);
+  static const Color darkgrey = Color.fromARGB(92, 133, 123, 123);
   static const Color whitecolor = Colors.white;
+  static const Color greencolor = Colors.green; 
     
 } 

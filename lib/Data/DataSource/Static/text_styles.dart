@@ -30,7 +30,7 @@ class Styles {
   // }
 
   static TextStyle mostserratBold(BuildContext context,
-      {double? fontSize, Color? color,FontWeight? fontWeight}) {
+      {double? fontSize, Color? color,FontWeight? fontWeight, TextAlign? textalign, }) {
     return TextStyle(
       // fontSize: (fontSize ?? 14.0.sp) * _textScale(context),
       fontSize: fontSize,
@@ -51,7 +51,7 @@ class Styles {
   // }
 
   static TextStyle montSerratRegular(BuildContext context,
-      {double? fontSize, Color? color, double height = 1.4,FontWeight fontWeight = FontWeight.normal}) {
+      {double? fontSize, Decoration? decoration,   Color? color, double height = 1.4,FontWeight fontWeight = FontWeight.normal}) {
     return TextStyle(
       // fontSize: (fontSize ?? 14.0.sp) * _textScale(context),
       color: color ?? AppColors.whitecolor,
