@@ -37,11 +37,11 @@ class _OTPScreenState extends State<OTPScreen> {
     return Scaffold(
       backgroundColor: AppColors.primarycolor,
       appBar: CustomAppBar(
-        leading: SvgPicture.asset(
-          Assets.leftarrow,
-          width: 2,
-          height: 2,
-        ),
+        texttitle:'',
+        leading: SvgPicture.asset(Assets.leftarrow), 
+        leadingfunction: (){ 
+          Navigator.pop(context);
+        },
       ),
       body: SingleChildScrollView(
         child: Container(

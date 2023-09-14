@@ -37,10 +37,13 @@ class Styles {
       color: color ?? AppColors.whitecolor,
       fontFamily: "Montserrat Bold",
       fontWeight: fontWeight?? FontWeight.normal
+      
     );
   }
 
+
  
+
   // static TextStyle plusJakartaSansLight(BuildContext context,
   //     {double? fontSize, Color? color}) {
   //   return TextStyle(

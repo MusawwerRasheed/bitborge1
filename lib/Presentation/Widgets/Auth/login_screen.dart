@@ -10,9 +10,13 @@ import 'package:bitborge/Presentation/Widgets/Auth/Components/form_label.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/Components/form_text_field.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/create_account_screen.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/otp_screen.dart';
+import 'package:bitborge/Presentation/Widgets/BottomNavigation/bottom_navigation_screen.dart';
+import 'package:bitborge/Presentation/Widgets/Intro/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
  
+
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
   @override
@@ -27,7 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primarycolor,
-      appBar: CustomAppBar(mainpic: SvgPicture.asset(Assets.logomajor),),
+      appBar: CustomAppBar(
+        
+      
+        mainpic: SvgPicture.asset(Assets.logomajor),
+        ),
+     
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: SingleChildScrollView(
@@ -95,12 +104,23 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 20,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  button(text: 'Login', color: AppColors.yellowcolor,),
-                ],
+              GestureDetector( 
+                onTap: () {
+                  Navigate.to(context, SplashScreen());
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    
+                     button(text: 'Login', color: AppColors.yellowcolor,   function: () {
+                       Navigate.to(context, BottomNavigationScreen());
+                     },),
+                      
+                  ],
+                ),
               ),
+
+            
               SizedBox(
                 height: 100,
               ),

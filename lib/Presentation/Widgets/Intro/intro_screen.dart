@@ -212,7 +212,7 @@ class _IntroPageState extends State<IntroPage> {
                                     value: circularProgressValue(),
                                     // value: 10, // Set a value between 0.0 and 1.0 to represent progress
                                     strokeWidth:
-                                        5.0, // Customize the stroke width
+                                        2.0, // Customize the stroke width
                                     color: AppColors
                                         .yellowcolor, // Customize the color
                                   ),

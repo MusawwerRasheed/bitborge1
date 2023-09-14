@@ -10,7 +10,7 @@ class AppText extends StatelessWidget {
   final dynamic? fontSize; 
   final int? maxLine;
   
-  const AppText(
+const AppText(
     
  
     this.text,    {

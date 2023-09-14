@@ -9,12 +9,11 @@ import 'package:bitborge/Presentation/Common/button.dart';
 import 'package:bitborge/Presentation/Common/check_box.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/Components/form_label.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/Components/form_text_field.dart';
-import 'package:bitborge/Presentation/Widgets/Auth/create_account_screen.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/login_screen.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/risk_warning.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:page_transition/page_transition.dart';
+
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
@@ -30,13 +29,17 @@ class _CreateAccountState extends State<CreateAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primarycolor,
-      appBar: CustomAppBar(
+       appBar: CustomAppBar(
         mainpic: SvgPicture.asset(Assets.logomajor),
-      ),
+       ),
+       
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: SingleChildScrollView(
-          child: Column(
+          child: 
+          
+          
+          Column(
             children: [
               const formlabel(
                 align: Alignment.topLeft,
@@ -190,6 +193,10 @@ class _CreateAccountState extends State<CreateAccount> {
               ]),
             ],
           ),
+
+
+
+
         ),
       ),
     );

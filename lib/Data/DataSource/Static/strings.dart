@@ -30,4 +30,21 @@ class Strings {
 
   static const String verificationcode = 'Verification Code';
   static const String resendcode = 'Resend Code'; 
+
+// notification tile
+
+
+static const String clicktoread = 'Click to read';
+static const String bitcointext = "Bitcoin's 'Upgrade for the Ages' Taproot is here";
+
+
+//Bottom Navigation Screen 
+
+static const String home = 'Home';
+static const String contactus = 'Contact Us';
+static const String settings = 'Settings';
+static const String logout = 'Logout';
+
+
+
 }

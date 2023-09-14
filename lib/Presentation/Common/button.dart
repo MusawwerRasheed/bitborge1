@@ -5,20 +5,28 @@ import 'package:bitborge/Presentation/Common/app_text.dart';
 import 'package:flutter/material.dart';
 
 class button extends StatelessWidget {
+  final Styles? style; 
   final Color? color ; 
-
-final String text;
+  final VoidCallback? function;
+  final String text;
+  
 
   const button({
+    
+    this.style, 
     this.color, 
+    this.function,
     required this.text,
     super.key,
 
   });
 
+
   @override
+
   Widget build(BuildContext context) {
-    return ElevatedButton(style: ElevatedButton.styleFrom(primary:color) , onPressed: (){}, 
+    return ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor:color ??AppColors.yellowcolor ,  ),
+     onPressed: function, 
     child: AppText(text, 
     style: Styles.montSerratRegular(context, 
     color: AppColors.whitecolor,fontSize: 18),));

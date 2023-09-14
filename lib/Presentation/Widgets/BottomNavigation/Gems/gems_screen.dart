@@ -4,16 +4,18 @@ import 'package:bitborge/Presentation/Common/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
- class HomeScreen extends StatefulWidget {
+ 
+ 
+ class GemsScreen extends StatefulWidget {
   final scaffoldKey; // Change 'var' to 'final'
   
-  HomeScreen({super.key, required this.scaffoldKey}); // Change 'scaffoldkey' to 'scaffoldKey'
+  GemsScreen({super.key, required this.scaffoldKey}); // Change 'scaffoldkey' to 'scaffoldKey'
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GemsScreen> createState() => _GemsScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GemsScreenState extends State<GemsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(     
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           widget.scaffoldKey.currentState!.openDrawer(); // Access 'scaffoldKey' using 'widget.'
         },
         shownotificationicon: true, 
-        texttitle: 'home',
+        texttitle: 'Gems',
         leading: SvgPicture.asset(Assets.dropdown),
       ),
     );

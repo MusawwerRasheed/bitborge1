@@ -22,7 +22,8 @@ class _RiskWarningState extends State<RiskWarning> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primarycolor,
-      appBar: CustomAppBar(mainpic: SvgPicture.asset(Assets.logomajor),),
+      appBar: CustomAppBar(
+               ),
       body: Container(
         height: 700,
         child: Stack(
