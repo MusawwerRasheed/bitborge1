@@ -6,6 +6,7 @@ import 'package:bitborge/Data/DataSource/Static/text_styles.dart';
 import 'package:bitborge/Presentation/Common/app_text.dart';
 import 'package:bitborge/Presentation/Common/appbar.dart';
 import 'package:bitborge/Presentation/Common/button.dart';
+import 'package:bitborge/Presentation/Common/dialog.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/Components/form_text_field.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/login_screen.dart';
 import 'package:bitborge/Presentation/Widgets/BottomNavigation/Components/custom_drawer.dart';
@@ -128,6 +129,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               decoration: BoxDecoration(
                 color: AppColors.yellowcolor,
                 borderRadius: BorderRadius.circular(2),
+                
               ),
             ),
           ),
@@ -186,69 +188,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
-                                return Dialog(
-                                  backgroundColor: AppColors.secondarycolor,
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.5,
-                                    child: Column(
-                                      children: [
-                                        Align(
-                                            alignment: Alignment.topRight,
-                                            child: GestureDetector(
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 20, right: 10.0),
-                                                  child: SvgPicture.asset(
-                                                      Assets.crosscircle),
-                                                ))),
-                                        SvgPicture.asset(Assets.timequarter),
-                                        AppText(
-                                          'Coming Soon',
-                                          style: Styles.montSerratRegular(
-                                              context,
-                                              color: AppColors.whitecolor,
-                                              fontSize: 20),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(9.0),
-                                          child: Text(
-                                            'The premium subscription will be launched soon. To get notified please enter your email below',
-                                            style: Styles.montSerratRegular(
-                                                context,
-                                                color: AppColors.grettext),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 30, right: 30),
-                                          child: formtextfield(
-                                            fontsize: 15,
-                                            hinttextalignment: TextAlign.center,
-                                            inputheight: 35,
-                                            obscureval: false,
-                                            hinttext: 'Email',
-                                            customradius:
-                                                BorderRadius.circular(4),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 220,
-                                          child: button(
-                                            text: 'Let me know',
-                                            color: AppColors.yellowcolor,
-                                            function: () {},
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                return customdialog();
                               });
                         },
                         child: const Text(
@@ -342,3 +282,4 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     );
   }
 }
+

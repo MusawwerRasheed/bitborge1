@@ -46,4 +46,9 @@ static const String btc = 'assets/images/btc.svg';
  static const String share ='assets/images/share.svg';
  static const String timequarter = 'assets/images/timequarter.svg';
 static const String subscriptionicon = 'assets/images/subscriptions.png'; 
-}
+
+static const String heartwhite = 'assets/images/heartwhite.svg';
+static const String bitcoingroup = 'assets/images/bitcongroup.svg'; 
+
+
+ }

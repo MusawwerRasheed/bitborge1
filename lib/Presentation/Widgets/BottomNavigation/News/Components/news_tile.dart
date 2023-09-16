@@ -106,6 +106,9 @@ class _NewsTileState extends State<NewsTile> {
       default:
         return Colors
             .black; // Default color if tag doesn't match any of the above
+
     }
+
   }
+
 }
