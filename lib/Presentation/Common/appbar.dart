@@ -52,7 +52,7 @@ class CustomAppBarState extends State<CustomAppBar> {
       // automaticallyImplyLeading: false,
       centerTitle: true,
       title: (widget.mainpic == null
-          ? Text(
+          ? Text(textScaleFactor: 1.0,
               widget.texttitle!,
               style: TextStyle(color: Colors.white),
             )

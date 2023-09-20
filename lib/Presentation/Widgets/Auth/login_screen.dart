@@ -15,131 +15,138 @@ import 'package:bitborge/Presentation/Widgets/Intro/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
  
-
+ import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
- 
+
 class _LoginScreenState extends State<LoginScreen> {
   String? emailcontroller;
   String? passwordcontroller;
 
   @override
   Widget build(BuildContext context) {
+    // Initialize flutter_screenutil for responsive design
+    ScreenUtil.init(context, designSize: Size(360, 640),  );
     return Scaffold(
       backgroundColor: AppColors.primarycolor,
-      appBar: CustomAppBar(
-        
-      
-        mainpic: SvgPicture.asset(Assets.logomajor),
-        ),
-     
+      appBar: CustomAppBar(mainpic: SvgPicture.asset(Assets.logomajor)),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding: EdgeInsets.symmetric(
+          horizontal: 20.w,
+          vertical: 30.h,
+        ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: Strings.login,
                 color: AppColors.whitecolor,
-                fontSize: 25,
+                fontSize: 25.sp,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: Strings.pleaseenter,
                 color: AppColors.grettext,
-                fontSize: 15,
+                fontSize: 15.sp,
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: 'Email',
-                fontSize: 18,
+                fontSize: 18.sp,
               ),
-              const SizedBox(height: 10),
-              formtextfield(
+              SizedBox(height: 10.h),
+              formtextfield(  
                 hinttext: 'hellojohn@gmail.com',
                 obscureval: false,
                 icon: SvgPicture.asset(Assets.envolope),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: 'Password',
-                fontSize: 18,
+                fontSize: 18.sp,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
               formtextfield(
-                hinttext: '*******',
+              hinttext: '*****',
                 obscureval: true,
                 righticon: SvgPicture.asset(Assets.eye),
                 icon: SvgPicture.asset(Assets.lock),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              GestureDetector( onTap: (){ 
-                Navigate.to(context, OTPScreen( ));
-              },
+              GestureDetector(
+                onTap: () {
+                  Navigate.to(context, OTPScreen());
+                },
                 child: formlabel(
                   align: Alignment.topRight,
                   text: 'Forgot Password?',
                   color: AppColors.yellowcolor,
-                  fontSize: 16,
+                  fontSize: 16.sp,
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
-              GestureDetector( 
+              GestureDetector(
                 onTap: () {
                   Navigate.to(context, SplashScreen());
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    
-                     button(text: 'Login', color: AppColors.yellowcolor,   function: () {
-                       Navigate.to(context, BottomNavigationScreen());
-                     },),
-                      
+                    button(
+                      text: 'Login',
+                      color: AppColors.yellowcolor,
+                      function: () {
+                        Navigate.to(context, BottomNavigationScreen());
+                      },
+                    ),
                   ],
                 ),
               ),
-
-            
               SizedBox(
-                height: 100,
+                height: 150.h,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                AppText(
-                  Strings.donthaveaccount,
-                  style: Styles.montSerratRegular(context,
-                      fontSize: 18, color: AppColors.whitecolor),
-                ),
-                GestureDetector(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppText(
+                   Strings.donthaveaccount,
+                    style: Styles.montSerratRegular(context,
+                        fontSize: 18.sp, color: AppColors.whitecolor),
+                  ),
+                  GestureDetector(
                     onTap: () {
                       Navigate.to(context, CreateAccount());
                     },
                     child: AppText(
-                      Strings.createaccount,
+                       Strings.createaccount,
                       style: Styles.montSerratRegular(context,
-                          fontSize: 16, color: AppColors.yellowcolor),
-                    ))
-              ]),
+                          fontSize: 16.sp, color: AppColors.yellowcolor),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

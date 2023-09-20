@@ -21,6 +21,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+ import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({Key? key}) : super(key: key);
 
@@ -29,29 +32,30 @@ class BottomNavigationScreen extends StatefulWidget {
 }
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
-  ValueNotifier<int> pageIndexNotifier = ValueNotifier<int>(3);
+  ValueNotifier<int> pageIndexNotifier = ValueNotifier<int>(1);
 
   PageController pageController = PageController(initialPage: 1);
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  double containerWidth = 35.0;
+  double containerWidth = 40.0.w; // Use responsive width
   bool isCollapsed = false;
   bool iconvisibility = false;
   bool textvisibility = false;
+
+
 
   void toggleCollapse() {
     setState(() {
       isCollapsed = !isCollapsed;
       if (isCollapsed) {
-        containerWidth = 30.0;
+        containerWidth = 40.0.w; // Use responsive width
         textvisibility = false;
-        iconvisibility = false; // Adjust this width as needed
+        iconvisibility = false;
       } else {
-        containerWidth = 155.0;
+        containerWidth = 170.0.w; // Use responsive width
         iconvisibility = true;
         textvisibility = true;
-        // Original width
       }
     });
   }
@@ -68,157 +72,139 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     super.dispose();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
-    var collapse;
+    // Initialize flutter_screenutil for responsive design
+    ScreenUtil.init(context, designSize: Size(360, 640), );
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: AppColors.primarycolor,
       drawer: const CustomDrawer(),
-      body: Stack(children: [
-        Column(children: [
-          Expanded(
-            child: PageView(
-              controller: pageController,
-              onPageChanged: (int page) {
-                pageIndexNotifier.value = page;
-              },
-              children: <Widget>[
-                Container(
-                  color: AppColors.primarycolor,
-                  child: Center(
-                    child: HomeScreen(scaffoldKey: scaffoldKey),
-                  ),
-                ),
-                Container(
-                  color: Colors.green,
-                  child: Center(
-                    child: NewsScreen(
-                      scaffoldkey: scaffoldKey,
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              Expanded(
+                child: PageView(
+                  controller: pageController,
+                  onPageChanged: (int page) {
+                    pageIndexNotifier.value = page;
+                  },
+                  children: <Widget>[
+                    Container(
+                      color: AppColors.primarycolor,
+                      child: Center(
+                        child: HomeScreen(scaffoldKey: scaffoldKey),
+                      ),
                     ),
-                  ),
+                    Container(
+                      color: Colors.green,
+                      child: Center(
+                        child: NewsScreen(
+                          scaffoldkey: scaffoldKey,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.orange,
+                      child: Center(
+                        child: signalsScreen(scaffoldKey: scaffoldKey),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.orange,
+                      child: Center(
+                        child: GemsScreen(scaffoldKey: scaffoldKey),
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  color: Colors.orange,
-                  child: Center(
-                    child: signalsScreen(scaffoldKey: scaffoldKey),
-                  ),
-                ),
-                Container(
-                  color: Colors.orange,
-                  child: Center(
-                    child: GemsScreen(scaffoldKey: scaffoldKey),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ]),
-
-
-        Positioned(
-          bottom: 52,
-          child: GestureDetector(
-            onTap: toggleCollapse,
-            child: AnimatedContainer(
-              width: containerWidth,
-              height: 30,
-              duration:
-                  const Duration(milliseconds: 300), // Adjust animation speed
-              curve: Curves.decelerate, // Adjust animation curve
-              decoration: BoxDecoration(
-                color: AppColors.yellowcolor,
-                borderRadius: BorderRadius.circular(2),
-                
+          Positioned(
+            bottom: 52.h, // Use responsive height
+            child: GestureDetector(
+              onTap: toggleCollapse,
+              child: AnimatedContainer(
+                width: containerWidth,
+                height: 30.h, // Use responsive height
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.decelerate,
+                decoration: BoxDecoration(
+                  color: AppColors.yellowcolor,
+                  borderRadius: BorderRadius.circular(2.w), // Use responsive radius
+                ),
               ),
             ),
           ),
-
-          // Container(key: collapse,
-          //   width: 155,
-          //   height: 30,
-          //   decoration: BoxDecoration(
-          //       color: AppColors.yellowcolor,
-          //       borderRadius: BorderRadius.circular(2)),
-          //   child: Row(
-          //     children: [
-          //       Padding(
-          //         padding: const EdgeInsets.only(left: 2.0),
-          //         child: SvgPicture.asset(Assets.diamondgrey),
-          //       ),
-          //       Padding(
-          //         padding: const EdgeInsets.only(left: 3.0),
-          //         child: AppText(
-          //           'Buy a premium',
-          //           style: Styles.montSerratRegular(context,
-          //               color: AppColors.whitecolor, fontSize: 16),
-          //         ),
-          //       ),
-          //       SizedBox(width: 3,),
-          //       GestureDetector(
-          //          child: GestureDetector(
-          //           onTap: (){ },
-          //           child: SvgPicture.asset(Assets.check))),
-          //     ],
-          //   ),
-          // ),
-        ),
-        Positioned(
-          bottom: 55,
-          child: Stack(children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Positioned(
+            bottom: 55.h, // Use responsive height
+            child: Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 2.0),
-                  child: GestureDetector(
-                      onTap: toggleCollapse,
-                      child: SvgPicture.asset(
-                        Assets.diamondgrey,
-                        color: AppColors.whitecolor,
-                      )), // Replace with your asset path
-                ),
-                if (!isCollapsed)
-                  Padding(
-                    padding: const EdgeInsets.only(left: 3.0),
-                    child: Visibility(
-                      visible: textvisibility,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 2.w), // Use responsive padding
                       child: GestureDetector(
-                        onTap: () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return customdialog();
-                              });
-                        },
-                        child: const Text(
-                          'Buy a premium',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                        onTap: toggleCollapse,
+                        child: Container( 
+                                 height: 25.h,
+                          child: SvgPicture.asset(
+                            Assets.diamondgrey,
+                            color: AppColors.whitecolor,
                           ),
                         ),
                       ),
                     ),
-                  ),
-                const SizedBox(
-                  width: 13,
-                ),
-                Visibility(
-                  visible: iconvisibility,
-                  child: GestureDetector(
-                    onTap: toggleCollapse,
-                    child: SvgPicture.asset(
-                      Assets.crosscircle, // Replace with your asset path
-                      color: const Color.fromARGB(255, 0, 0, 0),
+                    if (!isCollapsed)
+                      Padding(
+                        padding: EdgeInsets.only(left: 4.w), // Use responsive padding
+                        child: Visibility(
+                          visible: textvisibility,
+                          child: GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return customdialog();
+                                },
+                              );
+                            },
+                            child: Text(textScaleFactor:1.0, 
+                              'Buy a premium',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.sp, // Use responsive font size
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                     SizedBox(
+                      width: 13.w, // Use responsive width
                     ),
-                  ),
+                    Visibility(
+                      visible: iconvisibility,
+                      child: GestureDetector(
+                        onTap: toggleCollapse,
+                        child: SvgPicture.asset(
+                          Assets.crosscircle,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ]),
-        )
-      ]),
+          ),
+        ],
+      ),
       bottomNavigationBar: ValueListenableBuilder<int>(
         valueListenable: pageIndexNotifier,
         builder: (BuildContext context, int currentIndex, Widget? child) {
@@ -249,15 +235,14 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 index: 3,
               ),
             ],
-            currentIndex:
-                currentIndex, // Use the currentIndex from the ValueListenable
+            currentIndex: currentIndex,
             onTap: (int index) {
               pageController.animateToPage(
                 index,
                 duration: const Duration(milliseconds: 10),
                 curve: Curves.easeInOut,
               );
-              pageIndexNotifier.value = index; // Update the ValueNotifier
+              pageIndexNotifier.value = index;
             },
           );
         },
@@ -282,4 +267,3 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     );
   }
 }
-

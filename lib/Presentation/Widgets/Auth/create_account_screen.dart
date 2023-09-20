@@ -11,14 +11,22 @@ import 'package:bitborge/Presentation/Widgets/Auth/Components/form_label.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/Components/form_text_field.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/login_screen.dart';
 import 'package:bitborge/Presentation/Widgets/Auth/risk_warning.dart';
+import 'package:bitborge/Presentation/Widgets/BottomNavigation/bottom_navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+ 
 
+
+
+
+ import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateAccount extends StatefulWidget {
-  const CreateAccount({super.key});
+  const CreateAccount({Key? key}) : super(key: key);
+
   @override
-  State<CreateAccount> createState() => _CreateAccountState();
+  _CreateAccountState createState() => _CreateAccountState();
 }
 
 class _CreateAccountState extends State<CreateAccount> {
@@ -27,95 +35,98 @@ class _CreateAccountState extends State<CreateAccount> {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize flutter_screenutil for responsive design
+    ScreenUtil.init(context, designSize: Size(360, 640),  );
+
     return Scaffold(
       backgroundColor: AppColors.primarycolor,
-       appBar: CustomAppBar(
-        mainpic: SvgPicture.asset(Assets.logomajor),
-       ),
-       
+      appBar: CustomAppBar(mainpic: SvgPicture.asset(Assets.logomajor)),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding: EdgeInsets.symmetric(
+          horizontal: 20.w,
+          vertical: 30.h,
+        ),
         child: SingleChildScrollView(
-          child: 
-          
-          
-          Column(
+          child: Column(
             children: [
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: Strings.createaccount,
                 color: AppColors.whitecolor,
-                fontSize: 25,
+                fontSize: 25.sp,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              const formlabel(
+            formlabel(
                 align: Alignment.topLeft,
                 text: Strings.pleaseenterbelow,
                 color: AppColors.grettext,
-                fontSize: 15,
+                fontSize: 15.sp,
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: 'Full Name',
-                fontSize: 18,
+                fontSize: 18.sp,
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               formtextfield(
                 hinttext: 'Muzammil Afridi',
                 obscureval: false,
                 icon: SvgPicture.asset(Assets.user),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: 'Email',
-                fontSize: 18,
+                fontSize: 18.sp,
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               formtextfield(
                 hinttext: 'hellojohn@gmail.com',
                 obscureval: false,
                 icon: SvgPicture.asset(Assets.envolope),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              const Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                formlabel(
-                  align: Alignment.topLeft,
-                  text: 'Country',
-                  fontSize: 18,
-                ),
-                formlabel(
-                  align: Alignment.topRight,
-                  text: '(Optional)',
-                  fontSize: 16,
-                  color: Color.fromARGB(255, 112, 102, 102),
-                ),
-              ]),
-              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  formlabel(
+                    align: Alignment.topLeft,
+                    text: 'Country',
+                    fontSize: 18.sp,
+                  ),
+                  formlabel(
+                    align: Alignment.topRight,
+                    text: '(Optional)',
+                    fontSize: 16.sp,
+                    color: Color.fromARGB(255, 112, 102, 102),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.h),
               formtextfield(
                 hinttext: 'Country',
                 obscureval: false,
                 icon: SvgPicture.asset(Assets.globe),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              const formlabel(
+              formlabel(
                 align: Alignment.topLeft,
                 text: 'Password',
-                fontSize: 18,
+                fontSize: 18.sp,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
               formtextfield(
                 hinttext: '*******',
@@ -123,80 +134,96 @@ class _CreateAccountState extends State<CreateAccount> {
                 righticon: SvgPicture.asset(Assets.eye),
                 icon: SvgPicture.asset(Assets.lock),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
-              Row(children: [
-                const checkbox(),
-                Row(
-                  children: [
-                    AppText(
-                      Strings.doyouagree,
-                      style: Styles.montSerratRegular(context,
-                          fontSize: 11, color: AppColors.grettext),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigate.toReplace(context, const RiskWarning(),);
-                      },
-                      child: const Text(
-                        'Terms and conditions',
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontFamily: "Montserrat Regular",
-                          color: AppColors.grettext,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Color.fromARGB(255, 105, 118,
-                              129), // You can set the underline color if needed
-                          decorationStyle: TextDecorationStyle
-                              .solid, // You can adjust the underline style
+              Row(
+                children: [
+                  Checkbox(
+                    // Replace with your checkbox logic
+                    value: false,
+                    onChanged: (value) {},
+                  ),
+                  Row(
+                    children: [
+                      AppText(
+                        Strings.doyouagree,
+                        style: Styles.montSerratRegular(context,
+                            fontSize: 11.sp, color: AppColors.grettext),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigate.toReplace(context, const RiskWarning());
+                        },
+                        child: Text(textScaleFactor: 1.0,
+                          'Terms and conditions',
+                          style: TextStyle(
+                            fontSize: 11.sp,
+                            fontFamily: "Montserrat Regular",
+                            color: AppColors.grettext,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Color.fromARGB(255, 105, 118,
+                                129), // You can set the underline color if needed
+                            decorationStyle: TextDecorationStyle
+                                .solid, // You can adjust the underline style
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                )
-              ]),
-              Row(children: [
-                const checkbox(),
-                AppText(
-                  Strings.doyouacknowledge,
-                  style: Styles.montSerratRegular(context,
-                      fontSize: 11, color: AppColors.grettext),
-                )
-              ]),
-              const Column(
+                    ],
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    // Replace with your checkbox logic
+                    value: false,
+                    onChanged: (value) {},
+                  ),
+                  AppText(
+                    Strings.doyouacknowledge,
+                    style: Styles.montSerratRegular(context,
+                        fontSize: 11.sp, color: AppColors.grettext),
+                  )
+                ],
+              ),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  button(color: AppColors.yellowcolor,
-                    text: 'Create Account',
+                button(
+                    text: 'Create Account', 
+                    color: AppColors.yellowcolor,
+                    function: () {
+                      Navigate.to(context, BottomNavigationScreen());
+                    },
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                AppText(
-                  Strings.alreadyhaveacc,
-                  style: Styles.montSerratRegular(context,
-                      fontSize: 18, color: AppColors.whitecolor),
-                ),
-                GestureDetector(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppText(
+                    Strings.alreadyhaveacc,
+                    style: Styles.montSerratRegular(context,
+                        fontSize: 18.sp, color: AppColors.whitecolor),
+                  ),
+                  GestureDetector(
                     onTap: () {
                       Navigate.to(context, const LoginScreen());
                     },
                     child: AppText(
                       Strings.login,
                       style: Styles.montSerratRegular(context,
-                          fontSize: 16, color: AppColors.yellowcolor),
-                    ))
-              ]),
+                          fontSize: 16.sp, color: AppColors.yellowcolor),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
-
-
-
-
         ),
       ),
     );

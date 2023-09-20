@@ -4,30 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
  
 extension Scale on BuildContext {
-  
-  double get textScale => MediaQuery.of(this).textScaleFactor;
 
+  double get textScale => MediaQuery.of(this).textScaleFactor;
 }
 
 class Styles {
   
-  // static double _textScale(
-  //   BuildContext context,
-  // ) {
-  //    //print(MediaQuery.of(context).textScaleFactor);
-  //   return MediaQuery.of(context).textScaleFactor > 1.0
-  //       ? 0.9
-  //       : MediaQuery.of(context).textScaleFactor;
-  // }
+  static double _textScale(
+    BuildContext context,
+  ) {
+     //print(MediaQuery.of(context).textScaleFactor);
+    return MediaQuery.of(context).textScaleFactor > 1.0
+        ? 0.9
+        : MediaQuery.of(context).textScaleFactor;
+  }
 
-  // static TextStyle plusJakartaSansBlack(BuildContext context,
-  //     {double? fontSize, Color? color}) {
-  //   return TextStyle(
-  //     fontSize: (fontSize ?? 14.0.sp) * _textScale(context),
-  //     color: color ?? AppColors.blackColor,
-  //     fontFamily: "Lato Black",
-  //   );
-  // }
+   
 
   static TextStyle mostserratBold(BuildContext context,
       {double? fontSize, Color? color,FontWeight? fontWeight, TextAlign? textalign, }) {
@@ -36,22 +28,13 @@ class Styles {
       fontSize: fontSize,
       color: color ?? AppColors.whitecolor,
       fontFamily: "Montserrat Bold",
-      fontWeight: fontWeight?? FontWeight.normal
-      
+      fontWeight: fontWeight?? FontWeight.normal,
+       
     );
   }
 
 
- 
 
-  // static TextStyle plusJakartaSansLight(BuildContext context,
-  //     {double? fontSize, Color? color}) {
-  //   return TextStyle(
-  //     fontSize: (fontSize ?? 14.0.sp) * _textScale(context),
-  //     color: color ?? AppColors.blackColor,
-  //     fontFamily: "PlusJakartaSans Light",
-  //   );
-  // }
 
   static TextStyle montSerratRegular(BuildContext context,
       {double? fontSize, Decoration? decoration,   Color? color, double height = 1.4,FontWeight fontWeight = FontWeight.normal}) {

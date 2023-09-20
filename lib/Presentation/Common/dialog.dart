@@ -36,69 +36,75 @@ class customdialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      backgroundColor: AppColors.secondarycolor,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height *
-            0.5,
-        child: Column(  
-          children: [
-            Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(
-                              top: 20, right: 10.0),
-                      child: SvgPicture.asset(
-                          Assets.crosscircle),
-                    ))),
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top:18),
+          child: Dialog(
+            backgroundColor: AppColors.secondarycolor,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height*0.5,
+              child: Column(  
+                children: [
+                  Align(
+                      alignment: Alignment.topRight,
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(
+                                    top: 20, right: 10.0),
+                            child: SvgPicture.asset(
+                                Assets.crosscircle),
+                          ))),
+                  
+                  mainsvg??SvgPicture.asset(Assets.timequarter),
+                  
+                  AppText(
+                   dialogtitle ??'Coming Soon',
+                    style: Styles.montSerratRegular(
+                        context,
+                        color: AppColors.whitecolor,
+                        fontSize: 20),
+                  ),
             
-            mainsvg??SvgPicture.asset(Assets.timequarter),
-            
-            AppText(
-             dialogtitle ??'Coming Soon',
-              style: Styles.montSerratRegular(
-                  context,
-                  color: AppColors.whitecolor,
-                  fontSize: 20),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(9.0),
-              child: Text(
-                             dialogpara ??'The premium subscription will be launched soon. To get notified please enter your email below',
-                style: Styles.montSerratRegular(
-                    context,
-                    color: AppColors.grettext),
+                  Padding(
+                    padding: const EdgeInsets.all(9.0),
+                    child: Text(textAlign:TextAlign.center,
+                                   dialogpara ??'The premium subscription will be launched soon. To get notified please enter your email below',
+                      style: Styles.montSerratRegular(
+                          context,
+                          color: AppColors.grettext),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 30, right: 30),
+                    child: formtextfield(
+                      fontsize: 15.sp,
+                      hinttextalignment: TextAlign.center,
+              
+                      obscureval: false,
+                      hinttext: dialoginput ??'Email',
+                      customradius:
+                          BorderRadius.circular(4),
+                    ),
+                  ),
+                  Container(
+                    width: 220,
+                    child: button(
+                      text:  dialogbuttontext??'Let me know',
+                      color: AppColors.yellowcolor,
+                      function: () {},
+                    ),
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 30, right: 30),
-              child: formtextfield(
-                fontsize: 15,
-                hinttextalignment: TextAlign.center,
-                inputheight: 35,
-                obscureval: false,
-                hinttext: dialoginput ??'Email',
-                customradius:
-                    BorderRadius.circular(4),
-              ),
-            ),
-            Container(
-              width: 220,
-              child: button(
-                text:  dialogbuttontext??'Let me know',
-                color: AppColors.yellowcolor,
-                function: () {},
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

@@ -9,9 +9,15 @@ import 'package:bitborge/Presentation/Widgets/Auth/Components/form_label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pinput.dart';
+ 
+
+
+
+ import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OTPScreen extends StatefulWidget {
-  const OTPScreen({super.key});
+  const OTPScreen({Key? key});
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -20,16 +26,19 @@ class OTPScreen extends StatefulWidget {
 class _OTPScreenState extends State<OTPScreen> {
   @override
   Widget build(BuildContext context) {
+    // Initialize flutter_screenutil for responsive design
+    ScreenUtil.init(context, designSize: Size(360, 640), );
+
     final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 22,
+      width: 56.w,
+      height: 56.h,
+      textStyle: TextStyle(
+        fontSize: 22.sp,
         color: AppColors.whitecolor,
       ),
       decoration: BoxDecoration(
         color: AppColors.darkgrey,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.w),
         border: pinputborder,
       ),
     );
@@ -37,143 +46,163 @@ class _OTPScreenState extends State<OTPScreen> {
     return Scaffold(
       backgroundColor: AppColors.primarycolor,
       appBar: CustomAppBar(
-        texttitle:'',
-        leading: SvgPicture.asset(Assets.leftarrow), 
-        leadingfunction: (){ 
+        texttitle: '',
+        leading: SvgPicture.asset(Assets.leftarrow),
+        leadingfunction: () {
           Navigator.pop(context);
         },
       ),
       body: SingleChildScrollView(
         child: Container(
-            child: Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topCenter,
-              child: AppText(Strings.verificationcode,
-                  style: Styles.montSerratRegular(context, fontSize: 26)),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: RichText(
+          child: Column(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topCenter,
+                child: AppText(
+                  Strings.verificationcode,
+                  style: Styles.montSerratRegular(context, fontSize: 26.sp),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                  vertical: 20.h,
+                ),
+                child: RichText(
                   text: TextSpan(
-                style: const TextStyle(color: Colors.white),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Enter the',
-                    style: Styles.montSerratRegular(context, fontSize: 14),
-                  ),
-                  TextSpan(
-                      text: ' 4 digit',
-                      style: Styles.mostserratBold(context, fontSize: 14)),
-                  TextSpan(
-                      text: 'code that we have sent you through email',
-                      style: Styles.montSerratRegular(context, fontSize: 14)),
-                  TextSpan(
-                      text: ' yourgmail@gmail.com',
-                      style: Styles.mostserratBold(context, fontSize: 14)),
-                ],
-              )),
-            ),
-            Pinput(
-              defaultPinTheme: defaultPinTheme,
-              validator: (value) {
-                return value == '1234' ? pinsuccess() : pinfalure();
-              },
-            ),
-            Stack(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 55, vertical: 15),
-                  child: Visibility(
-                    visible: rowvisibility,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SvgPicture.asset(Assets.clock),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        AppText(
-                          '00:10',
-                          style: Styles.montSerratRegular(context,
-                              color: AppColors.grettext, fontSize: 16),
-                        ),
-                        const SizedBox(
-                          width: 100,
-                        ),
-                        AppText(
-                          Strings.resendcode,
-                          style: Styles.montSerratRegular(context,
-                              fontSize: 16, color: AppColors.yellowcolor),
-                        ),
-                      ],
-                    ),
+                    style: TextStyle(color: Colors.white),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Enter the',
+                        style: Styles.montSerratRegular(context, fontSize: 14.sp),
+                      ),
+                      TextSpan(
+                        text: ' 4 digit',
+                        style: Styles.mostserratBold(context, fontSize: 14.sp),
+                      ),
+                      TextSpan(
+                        text: 'code that we have sent you through email',
+                        style: Styles.montSerratRegular(context, fontSize: 14.sp),
+                      ),
+                      TextSpan(
+                        text: ' yourgmail@gmail.com',
+                        style: Styles.mostserratBold(context, fontSize: 14.sp),
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 55, vertical: 15),
-                  child: Visibility(
-                    visible: successrowvisibility,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SvgPicture.asset(Assets.check),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        AppText(
-                          'Code is Verified',
-                          style: Styles.montSerratRegular(context,
-                              color: AppColors.greencolor, fontSize: 16),
-                        ),
-                        const SizedBox(
-                          width: 100,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 55, vertical: 15),
-                  child: Visibility(
-                    visible: failurerowvisibility,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        AppText(
-                          'Code is unverfied',
-                          style: Styles.montSerratRegular(context,
-                              color: Colors.red, fontSize: 16),
-                        ),
-                        const SizedBox(
-                          width: 100,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              ),
+              Pinput(
+                defaultPinTheme: defaultPinTheme,
+                validator: (value) {
+                  return value == '1234' ? pinsuccess() : pinfalure();
+                },
+              ),
+              Stack(
                 children: [
-                  button(
-                    text: 'Continue',
-                    color: buttoncolor,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 55.w,
+                      vertical: 15.h,
+                    ),
+                    child: Visibility(
+                      visible: rowvisibility,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(Assets.clock),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          AppText(
+                            '00:10',
+                            style: Styles.montSerratRegular(context,
+                                color: AppColors.grettext, fontSize: 16.sp),
+                          ),
+                          SizedBox(
+                            width: 60.w,
+                          ),
+                          AppText(
+                            Strings.resendcode,
+                            style: Styles.montSerratRegular(context,
+                                fontSize: 16.sp, color: AppColors.yellowcolor),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 55.w,
+                      vertical: 15.h,
+                    ),
+                    child: Visibility(
+                      visible: successrowvisibility,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(Assets.check),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          AppText(
+                            'Code is Verified',
+                            style: Styles.montSerratRegular(context,
+                                color: AppColors.greencolor, fontSize: 16.sp),
+                          ),
+                          SizedBox(
+                            width: 100.w,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 55.w,
+                      vertical: 15.h,
+                    ),
+                    child: Visibility(
+                      visible: failurerowvisibility,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          AppText(
+                            'Code is unverfied',
+                            style: Styles.montSerratRegular(context,
+                                color: Colors.red, fontSize: 16.sp),
+                          ),
+                          SizedBox(
+                            width: 100.w,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
-            ),
-          ],
-        )),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                  vertical: 20.h,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    button(
+                      function: (){},
+                      text: 'Continue',
+                      color: buttoncolor,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

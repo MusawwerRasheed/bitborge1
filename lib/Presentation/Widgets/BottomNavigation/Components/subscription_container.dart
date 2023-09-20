@@ -28,11 +28,11 @@ class subsctiotioncontainer extends StatelessWidget {
       children: [ 
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
-          child: Text(    text1! , style: Styles.montSerratRegular(context, color: Colors.black, fontSize: 12),),
+          child: Text( textScaleFactor: 1.0,   text1! , style: Styles.montSerratRegular(context, color: Colors.black, fontSize: 12),),
         ), 
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
-          child: Text(  text2!, style: Styles.mostserratBold(context, color: Colors.black, fontSize: 15),),
+          child: Text( textScaleFactor: 1.0, text2!, style: Styles.mostserratBold(context, color: Colors.black, fontSize: 15),),
         )
       ],
     ),);

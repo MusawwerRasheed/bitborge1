@@ -29,7 +29,7 @@ class _NotificationTileState extends State<NotificationTile> {
 
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('20 July, 2021 | 07:30 am', style: Styles.montSerratRegular(context, color: AppColors.grettext, fontSize: 9),
+            Text(textScaleFactor: 1.0,  '20 July, 2021 | 07:30 am', style: Styles.montSerratRegular(context, color: AppColors.grettext, fontSize: 9),
         ), 
 
         Container(width: 10, height: 10,
@@ -38,7 +38,7 @@ class _NotificationTileState extends State<NotificationTile> {
         ],)  ,
       
       
-      Text(Strings.bitcointext, style: Styles.mostserratBold(context, color: AppColors.whitecolor, fontSize: 12),
+      Text(textScaleFactor: 1.0,   Strings.bitcointext, style: Styles.mostserratBold(context, color: AppColors.whitecolor, fontSize: 12),
       ), 
 
        ],) ,

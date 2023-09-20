@@ -7,17 +7,14 @@ import 'package:bitborge/Presentation/Common/app_text.dart';
 import 'package:bitborge/Presentation/Widgets/BottomNavigation/Components/profile.dart';
 import 'package:bitborge/Presentation/Widgets/BottomNavigation/Components/subscriptions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 
-
-class CustomDrawer extends StatelessWidget {
+ class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
-    super.key,
-    // required this.context,
+    Key? key,
   });
-
-  // final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +28,10 @@ class CustomDrawer extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: AppColors.primarycolor,
               ),
-              child: GestureDetector( onTap: (){
-                 Navigate.to(context, Profile(scaffoldKey: 'LabeledGlobalKey<ScaffoldState>#1ed5c'));
-              },
+              child: GestureDetector(
+                onTap: () {
+                  Navigate.to(context, Profile(  ));
+                },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -46,46 +44,44 @@ class CustomDrawer extends StatelessWidget {
                             child: SvgPicture.asset(Assets.crosscircle)),
                       ],
                     ),
-                    const SizedBox(
-                      height: 5,
+                    SizedBox(
+                      height: 5.h,
                     ),
                     AppText(
                       'Muzammil Afridi',
-                      style: Styles.mostserratBold(context,
-                          color: AppColors.whitecolor),
+                      style: Styles.mostserratBold(context, color: AppColors.whitecolor, fontSize: 16.sp),
                     ),
-                    const SizedBox(
-                      height: 5,
+                    SizedBox(
+                      height: 5.h,
                     ),
                     AppText(
                       'mfkhan8484@gmail.com',
-                      style: Styles.montSerratRegular(context,
-                          color: AppColors.whitecolor),
+                      style: Styles.montSerratRegular(context, color: AppColors.whitecolor, fontSize: 14.sp),
                     ),
-                    const SizedBox(
-                      height: 5,
+                    SizedBox(
+                      height: 5.h,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 5.0),
+                      padding: EdgeInsets.only(top: 5.h),
                       child: Container(
-                        width: 170,
-                        height: 30,
+                        width: 170.w,
+                        height: 30.h,
                         decoration: BoxDecoration(
                             color: AppColors.darkgrey,
-                            borderRadius: BorderRadius.circular(03)),
-                        child: Row( mainAxisAlignment: MainAxisAlignment.center,
+                            borderRadius: BorderRadius.circular(3.w)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 1.0),
+                              padding: EdgeInsets.only(left: 1.w),
                               child: SvgPicture.asset(Assets.diamond),
                             ),
-                            const SizedBox(
-                              width: 10,
+                            SizedBox(
+                              width: 10.w,
                             ),
-                            Text(
+                            Text(textScaleFactor: 1.0,
                               'Premium User',
-                              style: Styles.mostserratBold(context,
-                                  color: AppColors.yellowcolor, fontSize: 16),
+                              style: Styles.mostserratBold(context, color: AppColors.yellowcolor, fontSize: 16.sp),
                             ),
                           ],
                         ),
@@ -99,8 +95,7 @@ class CustomDrawer extends StatelessWidget {
               leading: SvgPicture.asset(Assets.homewhite),
               title: AppText(
                 Strings.home,
-                style:
-                    Styles.mostserratBold(context, color: AppColors.whitecolor),
+                style: Styles.mostserratBold(context, color: AppColors.whitecolor, fontSize: 16.sp),
               ),
               onTap: () {},
             ),
@@ -111,6 +106,7 @@ class CustomDrawer extends StatelessWidget {
                 style: Styles.mostserratBold(
                   context,
                   color: AppColors.whitecolor,
+                  fontSize: 16.sp,
                 ),
               ),
               onTap: () {
@@ -125,6 +121,7 @@ class CustomDrawer extends StatelessWidget {
                 style: Styles.mostserratBold(
                   context,
                   color: AppColors.whitecolor,
+                  fontSize: 16.sp,
                 ),
               ),
               onTap: () {
@@ -139,6 +136,7 @@ class CustomDrawer extends StatelessWidget {
                 style: Styles.mostserratBold(
                   context,
                   color: AppColors.whitecolor,
+                  fontSize: 16.sp,
                 ),
               ),
               onTap: () {
@@ -147,32 +145,30 @@ class CustomDrawer extends StatelessWidget {
             ),
             // Add more ListTile items as needed
             SizedBox(
-              height: 80,
+              height: 80.h,
             ),
 
             Center(
               child: Container(
-                width: 150,
-                height: 30,
+                width: 150.w,
+                height: 30.h,
                 decoration: BoxDecoration(
                     color: AppColors.yellowcolor,
-                    borderRadius: BorderRadius.circular(03)),
+                    borderRadius: BorderRadius.circular(3.w)),
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 1.0),
+                      padding: EdgeInsets.only(left: 1.w),
                       child: SvgPicture.asset(Assets.diamondgrey),
                     ),
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: 10.w,
                     ),
                     GestureDetector(
-                      onTap: () => Navigate.to(context, Subscriptions())
-                      ,
-                      child: Text(
+                      onTap: () => Navigate.to(context, Subscriptions()),
+                      child: Text(textScaleFactor: 1.0,
                         'Upgrade plan',
-                        style: Styles.mostserratBold(context,
-                            color: AppColors.primarycolor, fontSize: 16),
+                        style: Styles.mostserratBold(context, color: AppColors.primarycolor, fontSize: 16.sp),
                       ),
                     ),
                   ],

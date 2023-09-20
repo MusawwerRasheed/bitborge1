@@ -14,14 +14,10 @@ import 'package:bitborge/Presentation/Widgets/Auth/risk_warning.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+ class Profile extends StatefulWidget {
+  final GlobalKey<ScaffoldState>? scaffoldKey;
 
-class Profile extends StatefulWidget {
-  final scaffoldKey;
-  // Change 'var' to 'final'
-
-  Profile(
-      {super.key,
-      required this.scaffoldKey}); // Change 'scaffoldkey' to 'scaffoldKey'
+  Profile({Key? key,  this.scaffoldKey});
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -34,13 +30,12 @@ class _ProfileState extends State<Profile> {
       backgroundColor: AppColors.primarycolor,
       appBar: CustomAppBar(
         leadingfunction: () {
-          print(widget.scaffoldKey);
-          widget.scaffoldKey.currentState!.openDrawer();
-          // Access 'scaffoldKey' using 'widget.'
+          Navigator.pop(context);
+          // widget.scaffoldKey.currentState!.openDrawer();
         },
         shownotificationicon: true,
         texttitle: 'Profile',
-        leading: SvgPicture.asset(Assets.dropdown),
+        leading: SvgPicture.asset(Assets.leftarrow),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,133 +44,127 @@ class _ProfileState extends State<Profile> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(Assets.userpng),
-              // GestureDetector(
-              //     onTap: Navigator.of(context).pop,
-              //     child: SvgPicture.asset(Assets.crosscircle),
-              //     ),
             ],
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5.h),
           AppText(
             'Muzammil Afridi',
-            style: Styles.mostserratBold(context, color: AppColors.whitecolor),
+            style: Styles.mostserratBold(context, color: AppColors.whitecolor, fontSize: 16.sp),
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5.h),
           AppText(
             'mfkhan8484@gmail.com',
-            style:
-                Styles.montSerratRegular(context, color: AppColors.whitecolor),
+            style: Styles.montSerratRegular(context, color: AppColors.whitecolor, fontSize: 14.sp),
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5.h),
           Padding(
-            padding: const EdgeInsets.only(top: 5.0),
+            padding: EdgeInsets.only(top: 5.h),
             child: Container(
-              width: 150,
-              height: 30,
+              width: 170.w,
+              height: 30.h,
               decoration: BoxDecoration(
-                  color: AppColors.darkgrey,
-                  borderRadius: BorderRadius.circular(03)),
+                color: AppColors.darkgrey,
+                borderRadius: BorderRadius.circular(3.w),
+              ),
               child: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
+                    padding: EdgeInsets.only(left: 10.w),
                     child: SvgPicture.asset(Assets.diamond),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
+                  SizedBox(width: 10.w),
+                  Text(textScaleFactor: 1.0,
                     'Premium User',
                     style: Styles.mostserratBold(context,
-                        color: AppColors.yellowcolor, fontSize: 16),
+                     color: AppColors.yellowcolor, fontSize: 16.sp),
                   ),
+
                 ],
               ),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20.h),
           Container(
-            width: 300,
-            height: 1,
+            width: 300.w,
+            height: 1.h,
             decoration: BoxDecoration(color: AppColors.grettext),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical:02, horizontal: 30),
+            padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 30.w),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                const formlabel(
+                SizedBox(height: 10.h),
+                formlabel(
                   align: Alignment.topLeft,
                   text: 'Full Name',
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 formtextfield(
                   hinttext: 'Muzammil Afridi',
                   obscureval: false,
                   icon: SvgPicture.asset(Assets.user),
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(height: 10.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    formlabel(
+                      align: Alignment.topLeft,
+                      text: 'Country',
+                      fontSize: 18.sp,
+                    ),
+                    formlabel(
+                      align: Alignment.topRight,
+                      text: '(Optional)',
+                      fontSize: 16.sp,
+                      color: Color.fromARGB(255, 112, 102, 102),
+                    ),
+                  ],
                 ),
-                
-                const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      formlabel(
-                        align: Alignment.topLeft,
-                        text: 'Country',
-                        fontSize: 18,
-                      ),
-                      formlabel(
-                        align: Alignment.topRight,
-                        text: '(Optional)',
-                        fontSize: 16,
-                        color: Color.fromARGB(255, 112, 102, 102),
-                      ),
-                    ]),
-                const SizedBox(height: 10),
-                 
+
+                SizedBox(height: 10.h),
+
                 formtextfield(
                   hinttext: 'Country',
                   obscureval: true,
-               
                   icon: SvgPicture.asset(Assets.globe),
                 ),
-                const SizedBox(
-                  height: 50,
+                
+                SizedBox(height: 50.h),
+
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.yellowcolor,
+                    textStyle: TextStyle(fontSize: 15.sp),
+                    padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 100.w),
+                  ),
+                  onPressed: () {},
+                  
+                    child: Text( textScaleFactor: 1.0,'Save Changes'),
                 ),
+                
+                SizedBox(height: 4.h,),
 
-
-                // button(text: 'Save Changes', color: AppColors.yellowcolor, )
-                ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: AppColors.yellowcolor, textStyle: TextStyle(fontSize: 15),
-                padding: EdgeInsets.symmetric(vertical: 012, horizontal: 100)),
-                  onPressed: ( ){}, child:SizedBox( width: 100, 
-                    child: Text('Save Changes'))), 
-              
-    Container(decoration: BoxDecoration(border: Border.all( color: AppColors.yellowcolor) , borderRadius: BorderRadius.circular(5)),
-      child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: AppColors.primarycolor, 
-      textStyle: TextStyle(fontSize: 15),
-                  padding: EdgeInsets.symmetric(vertical: 012, horizontal: 100)),
-                    onPressed: ( ){}, child:SizedBox( width: 100, 
-                      child: Text('Save Changes'))),
-    ), 
-              
-   
-
-
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.yellowcolor),
+                    borderRadius: BorderRadius.circular(5.w),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primarycolor,
+                      textStyle: TextStyle(fontSize: 15.sp),
+                    ),
+                     onPressed: () {},
+                    child: SizedBox(
+                      width: 260.w,
+                      child: Text (textAlign:TextAlign.center ,'change password'),
+                    ),
+                  ),
+                ),
+     
               ],
-
             ),
           ),
         ],

@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+ import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class NewsTile extends StatefulWidget {
   final String? tag;
   const NewsTile({super.key, this.tag});
@@ -20,76 +23,75 @@ class NewsTile extends StatefulWidget {
 class _NewsTileState extends State<NewsTile> {
   @override
   Widget build(BuildContext context) {
+    // Initialize flutter_screenutil for responsive design
+    ScreenUtil.init(context, designSize: Size(360, 640), );
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
+      padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 5.w), // Use responsive padding
       child: Card(
         color: AppColors.secondarycolor,
         child: GestureDetector(
           onTap: () {
-            Navigate.to(context, NewsTileDetails(title: widget.tag,));
+            Navigate.to(context, NewsTileDetails(title: widget.tag));
           },
           child: ListTile(
-              title: Padding(
-                padding: const EdgeInsets.only(top: 15.0),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                            width: 70.w,
-                            decoration: BoxDecoration(
-                              color: AppColors.darkgrey,
-                              borderRadius: BorderRadius.circular(3),
+            title: Padding(
+              padding: EdgeInsets.only(top: 15.h),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 70.w, // Use responsive width
+                        decoration: BoxDecoration(
+                          color: AppColors.darkgrey,
+                          borderRadius: BorderRadius.circular(3.w), // Use responsive border radius
+                        ),
+                        child: Center(
+                          child: Text(textScaleFactor: 1.0,
+                            widget.tag!,
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16.sp, // Use responsive font size
+                              color: _getTextColor(widget.tag!),
                             ),
-                            child: Center(
-                              child: Text(
-                                widget.tag!,
-                                style: TextStyle(
-                                  fontFamily:
-                                      'Montserrat', // You can replace this with your desired font
-                                  fontWeight: FontWeight
-                                      .normal, // You can set the desired font weight
-                                  fontSize:
-                                      16.0, // You can set the desired font size
-                                  color: _getTextColor(widget
-                                      .tag!), // Call a function to get the text color based on widget.tag
-                                ),
-                              ),
-                            )),
-                        Text('20 July, 2021 | 07:30 am',
-                            style: Styles.montSerratRegular(context,
-                                color: AppColors.grettext, fontSize: 12)),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Text(
-                        Strings.bitcointext,
-                        style: Styles.mostserratBold(context,
-                            color: AppColors.whitecolor, fontSize: 12),
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-
-              //  Text(Strings.bitcointext, style: Styles.mostserratBold(context, color: AppColors.whitecolor, fontSize: 12 ),
-              // ),
-
-              subtitle: Padding(
-                padding: const EdgeInsets.only(top: 5.0),
-                child: Text(
-                  'The best Bitcoin casinos offer almost instant withdrawals, zero transaction fees, anonymous transfers, as well',
-                  style: Styles.montSerratRegular(
-                    context,
-                    color: AppColors.grettext,
+                      Text(textScaleFactor: 1.0,
+                        '20 July, 2021 | 07:30 am',
+                        style: Styles.montSerratRegular(context,
+                            color: AppColors.grettext, fontSize: 12.sp), // Use responsive font size
+                      ),
+                    ],
                   ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.h), // Use responsive padding
+                    child: Text(textScaleFactor: 1.0,
+                      Strings.bitcointext,
+                      style: Styles.mostserratBold(context,
+                          color: AppColors.whitecolor, fontSize: 12.sp), // Use responsive font size
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            subtitle: Padding(
+              padding: EdgeInsets.only(top: 5.h), // Use responsive padding
+              child: Text(textScaleFactor: 1.0,
+                'The best Bitcoin casinos offer almost instant withdrawals, zero transaction fees, anonymous transfers, as well',
+                style: Styles.montSerratRegular(
+                  context,
+                  color: AppColors.grettext,
                 ),
               ),
-              leading: Image.asset(
-                Assets.tileimage,
-              )),
+            ),
+            leading: Image.asset(
+              Assets.tileimage,
+            ),
+          ),
         ),
       ),
     );
@@ -104,11 +106,7 @@ class _NewsTileState extends State<NewsTile> {
       case 'Neutral':
         return Colors.indigo;
       default:
-        return Colors
-            .black; // Default color if tag doesn't match any of the above
-
+        return Colors.black; // Default color if tag doesn't match any of the above
     }
-
   }
-
 }

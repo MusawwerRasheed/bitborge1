@@ -4,6 +4,7 @@ import 'package:bitborge/Data/DataSource/Static/color_pallets.dart';
 import 'package:bitborge/Data/DataSource/Static/text_styles.dart';
 import 'package:bitborge/Presentation/Widgets/Intro/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class formtextfield extends StatefulWidget {
@@ -38,8 +39,10 @@ class _formtextfieldState extends State<formtextfield> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.inputheight ?? 45,
-      child: TextField( 
+      height: widget.inputheight ?? 45.h,
+      child: TextField 
+      ( 
+        obscuringCharacter: '*', 
         textAlign:  widget.hinttextalignment ?? TextAlign.left,
         controller: widget.controller,
         obscureText: widget.obscureval,
@@ -47,9 +50,8 @@ class _formtextfieldState extends State<formtextfield> {
           filled: true,
           fillColor: Color.fromARGB(255, 66, 69, 82), // Grey background color
           hintText: widget.hinttext,
-          hintStyle: Styles.montSerratRegular(context,
-              fontSize: widget.fontsize ??18,
-              color: Color.fromARGB(255, 168, 167, 167)), // Grey hint text
+          hintStyle: TextStyle(height: 2.h,  fontFamily: "Montserrat Regular",
+           color: AppColors.grettext, fontSize: 18.sp), // Grey hint text
           border: OutlineInputBorder(
             borderRadius: widget.customradius ?? BorderRadius.circular(10.0), // Rounded edges
           ),
@@ -71,7 +73,7 @@ class _formtextfieldState extends State<formtextfield> {
           ), 
         ),
         style: Styles.montSerratRegular(context,
-            color: Colors.grey, fontSize: 18), // Leading icon
+            color: Colors.grey, fontSize: 18.sp , height: 3.h), // Leading icon
       ),
     );
   }
