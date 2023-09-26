@@ -55,7 +55,7 @@ class _NewsTileState extends State<NewsTile> {
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.normal,
                               fontSize: 16.sp, // Use responsive font size
-                              color: _getTextColor(widget.tag!),
+                              color: getTextColor(widget.tag!),
                             ),
                           ),
                         ),
@@ -97,7 +97,7 @@ class _NewsTileState extends State<NewsTile> {
     );
   }
 
-  Color _getTextColor(String tag) {
+  Color getTextColor(String tag) {
     switch (tag) {
       case 'Positive':
         return Colors.green;

@@ -20,6 +20,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+
+
+
+
 class customdialog extends StatelessWidget {
   final SvgPicture? mainsvg;
   final String? dialoginput; 
@@ -84,6 +88,7 @@ class customdialog extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 30, right: 30),
                     child: formtextfield(
+                      // height: 1.4.h,
                       fontsize: 15.sp,
                       hinttextalignment: TextAlign.center,
               

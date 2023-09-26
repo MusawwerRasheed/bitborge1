@@ -14,12 +14,8 @@ import 'package:bitborge/Presentation/Widgets/Auth/risk_warning.dart';
 import 'package:bitborge/Presentation/Widgets/BottomNavigation/bottom_navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
- 
-
-
-
-
- import 'package:flutter/material.dart';
+  
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreateAccount extends StatefulWidget {

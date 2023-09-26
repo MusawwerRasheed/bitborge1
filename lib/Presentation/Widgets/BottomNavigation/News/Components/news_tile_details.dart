@@ -11,19 +11,13 @@ import 'package:flutter_svg/svg.dart';
 
 
 class NewsTileDetails extends StatelessWidget {
-
   String? title;
-
   var scaffoldkey;
 
   NewsTileDetails({super.key, this.title, this.scaffoldkey});
-
   @override
-
-  Widget build(BuildContext context) {
-     
-    ScreenUtil.init(context, designSize: Size(360, 640),  );
-
+  Widget build(BuildContext context) {     
+    ScreenUtil.init(context, designSize: Size(360, 640), );
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -95,7 +89,7 @@ class NewsTileDetails extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 19.sp,  
-                              color: _pickColor(title!),
+                              color: pickColor(title!),
                             ),
                           ),
                         ),
@@ -154,8 +148,7 @@ class NewsTileDetails extends StatelessWidget {
                       'The best bitcon casinos expected version of the flutter, widgets are being used over all the app, there fore it creates a true , and the track of the tree is managed using the. ',
                       style: Styles.montSerratRegular(context,
                           color: AppColors.grettext, fontSize: 15.sp),  
-                    ),
-                     
+                    ), 
                   ],
                 ),
               ),
@@ -175,7 +168,7 @@ class NewsTileDetails extends StatelessWidget {
     );
   }
 
-  _pickColor(String val) {
+  pickColor(String val) {
     switch (val) {
       case 'Positive':
         return Colors.green;

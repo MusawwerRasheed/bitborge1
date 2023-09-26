@@ -132,29 +132,16 @@ class _ProfileState extends State<Profile> {
                 ),
                 
                 SizedBox(height: 50.h),
-
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.yellowcolor,
-                    textStyle: TextStyle(fontSize: 15.sp),
-                    padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 100.w),
-                  ),
-                  onPressed: () {},
                   
-                    child: Text( textScaleFactor: 1.0,'Save Changes'),
-                ),
-                
-                SizedBox(height: 4.h,),
-
-                Container(
+                   Container(height: 30.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.yellowcolor),
                     borderRadius: BorderRadius.circular(5.w),
                   ),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primarycolor,
-                      textStyle: TextStyle(fontSize: 15.sp),
+                      backgroundColor: AppColors.yellowcolor,
+                      textStyle: TextStyle(fontSize: 20.sp),
                     ),
                      onPressed: () {},
                     child: SizedBox(
@@ -164,7 +151,31 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
      
-              ],
+
+
+
+                 
+                SizedBox(height: 4.h,),
+
+                Container(height: 30.h,
+                  decoration: BoxDecoration(
+                    
+                    border: Border.all(color: AppColors.yellowcolor),
+                    borderRadius: BorderRadius.circular(5.w),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primarycolor,
+                      textStyle: TextStyle(fontSize: 20.sp),
+                    ),
+                     onPressed: () {},
+                    child: SizedBox(
+                      width: 260.w,
+                      child: Text (textAlign:TextAlign.center ,'Save password'),
+                    ),
+                  ),
+                ),
+               ],
             ),
           ),
         ],

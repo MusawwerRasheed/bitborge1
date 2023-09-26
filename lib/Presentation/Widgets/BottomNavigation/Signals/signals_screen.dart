@@ -9,14 +9,18 @@ import 'package:flutter_svg/svg.dart';
 
 
  class signalsScreen extends StatefulWidget {
+
+  // ignore: prefer_typing_uninitialized_variables
   final scaffoldKey;  
-  signalsScreen({super.key, required this.scaffoldKey}); // Change 'scaffoldkey' to 'scaffoldKey'
+  const signalsScreen({super.key, required this.scaffoldKey}); // Change 'scaffoldkey' to 'scaffoldKey'
+
 
   @override
-  State<signalsScreen> createState() => _signalsScreenState();
+  State<signalsScreen> createState() => signalsScreenState();
 }
 
-class _signalsScreenState extends State<signalsScreen> {
+
+class signalsScreenState extends State<signalsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(     

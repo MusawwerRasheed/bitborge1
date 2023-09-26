@@ -45,7 +45,7 @@ class CustomAppBarState extends State<CustomAppBar> {
             onTap: () {
              widget.leadingfunction!();
             },
-            child: widget.leading),
+            child: Container(width:80.w, height: 80.w, child: widget.leading)),
       ),
       elevation: 0.1,
       backgroundColor: AppColors.primarycolor,

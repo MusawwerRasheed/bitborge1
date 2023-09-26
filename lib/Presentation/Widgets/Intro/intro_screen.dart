@@ -16,32 +16,32 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
-  final PageController _pageController = PageController();
-  late ValueNotifier<int> _currentIndexNotifier = ValueNotifier<int>(0);
+  final PageController pageController = PageController();
+  late ValueNotifier<int> currentIndexNotifier = ValueNotifier<int>(0);
 
   final List<String> headings = Utils.introheadings;
   final List<String> paragraphs = Utils.introparagraphs;
 
-  void _updateIndex(int index) {
+  void updateIndex(int index) {
     setState(() {
-      _currentIndexNotifier.value = index;
+      currentIndexNotifier.value = index;
     });
   }
 
-  void _goBack() {
-    if (_currentIndexNotifier.value > 0) {
-      _pageController.animateToPage(
-        _currentIndexNotifier.value - 1,
+  void goBack() {
+    if (currentIndexNotifier.value > 0) {
+      pageController.animateToPage(
+        currentIndexNotifier.value - 1,
         duration: Duration(milliseconds: 500),
         curve: Curves.ease,
       );
     }
   }
 
-  void _goforward() {
-    if (_currentIndexNotifier.value < 2) {
-      _pageController.animateToPage(
-        _currentIndexNotifier.value + 1,
+  void goforward() {
+    if (currentIndexNotifier.value < 2) {
+      pageController.animateToPage(
+        currentIndexNotifier.value + 1,
         duration: Duration(milliseconds: 500),
         curve: Curves.ease,
       );
@@ -51,9 +51,9 @@ class _IntroPageState extends State<IntroPage> {
   }
 
   double? circularProgressValue() {
-    if (_currentIndexNotifier.value == 0) {
+    if (currentIndexNotifier.value == 0) {
       return 0.4;
-    } else if (_currentIndexNotifier.value == 1) {
+    } else if (currentIndexNotifier.value == 1) {
       return 0.7;
     } else {
       return 1;
@@ -68,14 +68,14 @@ class _IntroPageState extends State<IntroPage> {
         children: <Widget>[
           Container(
             height: MediaQuery.of(context).size.height * 0.5,
-            width: 300,
+            width: 350,
             child: Stack(
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 48.0),
                   child: PageView(
-                    controller: _pageController,
-                    onPageChanged: _updateIndex,
+                    controller: pageController,
+                    onPageChanged: updateIndex,
                     children: <Widget>[
                       SvgPicture.asset(Assets.slider1),
                       SvgPicture.asset(Assets.slider2),
@@ -87,14 +87,14 @@ class _IntroPageState extends State<IntroPage> {
                 Positioned( top: 1, right: -13, child: Align(
                   alignment: Alignment.topRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 18.0, left: 219),
+                    padding: const EdgeInsets.only(top: 18.0, left: 200),
                     child: Visibility(
-                      visible: _currentIndexNotifier.value != 2,
+                      visible: currentIndexNotifier.value != 2,
                       child: TextButton(
                         onPressed: () {
                           // _updateIndex(2);
 
-                          _pageController.animateToPage(
+                          pageController.animateToPage(
                             2,
                             duration: Duration(milliseconds: 500),
                             curve: Curves.ease,
@@ -123,7 +123,7 @@ class _IntroPageState extends State<IntroPage> {
                   width: 20.0,
                   height: 10.0,
                   margin: EdgeInsets.symmetric(horizontal: 1.0),
-                  decoration: index == _currentIndexNotifier.value
+                  decoration: index == currentIndexNotifier.value
                       ? BoxDecoration(
                           color: AppColors.yellowcolor,
                           shape: BoxShape.rectangle,
@@ -149,7 +149,7 @@ class _IntroPageState extends State<IntroPage> {
             child: Column(
               children: [
                 AppText(
-                  headings[_currentIndexNotifier.value],
+                  headings[currentIndexNotifier.value],
                   style: Styles.montSerratRegular(context,
                       color: Colors.grey, fontSize: 23),
                 ),
@@ -157,7 +157,7 @@ class _IntroPageState extends State<IntroPage> {
                SizedBox(height: 20.h,),
                  SizedBox( height: 60.h,
                    child: Text ( textScaleFactor: 1.0,
-                     textAlign:TextAlign.center, paragraphs[_currentIndexNotifier.value],
+                     textAlign:TextAlign.center, paragraphs[currentIndexNotifier.value],
                         style: Styles.montSerratRegular(context,
                             color: Colors.grey, fontSize: 14),
                         overflow:
@@ -175,9 +175,9 @@ class _IntroPageState extends State<IntroPage> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Visibility(
-                                visible: _currentIndexNotifier.value != 0,
+                                visible: currentIndexNotifier.value != 0,
                                 child: TextButton(
-                                  onPressed: _goBack,
+                                  onPressed: goBack,
                                   child: AppText(
                                     Strings.back,
                                     style: Styles.mostserratBold(context,
@@ -191,7 +191,7 @@ class _IntroPageState extends State<IntroPage> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               GestureDetector(
-                                onTap: _goforward,
+                                onTap: goforward,
                                 child: Stack(
                                   alignment: Alignment.center,
                                   children: [
@@ -231,9 +231,7 @@ class _IntroPageState extends State<IntroPage> {
                           )
                         ],
                       ),
-                    ),
-                  
-                
+                    ),                
               ],
             ),
           ),

@@ -214,22 +214,22 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             selectedItemColor: AppColors.yellowcolor,
             backgroundColor: Colors.blue, // Set the background color to blue
             items: [
-              _buildBottomNavigationBarItem(
+              buildBottomNavigationBarItem(
                 icon: Assets.homegrey,
                 label: 'Home',
                 index: 0,
               ),
-              _buildBottomNavigationBarItem(
+              buildBottomNavigationBarItem(
                 icon: Assets.form,
                 label: 'News',
                 index: 1,
               ),
-              _buildBottomNavigationBarItem(
+              buildBottomNavigationBarItem(
                 icon: Assets.signals,
                 label: 'Signals',
                 index: 2,
               ),
-              _buildBottomNavigationBarItem(
+              buildBottomNavigationBarItem(
                 icon: Assets.gems,
                 label: 'Gems',
                 index: 3,
@@ -250,7 +250,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     );
   }
 
-  BottomNavigationBarItem _buildBottomNavigationBarItem({
+  BottomNavigationBarItem buildBottomNavigationBarItem({
     required String icon,
     required String label,
     required int index,

@@ -4,50 +4,41 @@ import 'package:bitborge/Presentation/Widgets/Intro/intro_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
- 
- import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
- 
-
-
-
- import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Offset> _leftAnimation;
-  late Animation<Offset> _rightAnimation;
+class SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<Offset> leftAnimation;
+  late Animation<Offset> rightAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2), // Adjust the duration for faster speed
+      duration: Duration(seconds: 1), // Adjust the duration for faster speed
     );
 
-    _leftAnimation = Tween<Offset>(
+    leftAnimation = Tween<Offset>(
       begin: Offset(-2.0, 0.0), // Start from farther left
       end: Offset(0.0, 0.0),   // Slide to center
-    ).animate(_controller);
+    ).animate(controller);
 
-    _rightAnimation = Tween<Offset>(
+    rightAnimation = Tween<Offset>(
       begin: Offset(2.0, 0.0),  // Start from farther right
       end: Offset(0.0, 0.0),   // Slide to center
-    ).animate(_controller);
+    ).animate(controller);
 
-    _controller.forward().whenComplete(() {
-      // Navigate to the next screen after animation completes
+    controller.forward().whenComplete(() async {
+      await Future.delayed(Duration(seconds: 2)); 
       Navigate.to(context, IntroPage());
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +49,15 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SlideTransition(
-              position: _leftAnimation,
+              position: leftAnimation,
               child: SvgPicture.asset(Assets.applogo1),
             ),
             SizedBox(width: 10),
             SlideTransition(
-              position: _rightAnimation,
+              position: rightAnimation,
               child: SvgPicture.asset(Assets.applogo),
             ),
+            
           ],
         ),
       ),
@@ -74,7 +66,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 }
+
